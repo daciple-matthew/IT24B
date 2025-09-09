@@ -15,6 +15,7 @@
     <ul id="taskList"> Task goes here... </ul>
 
     <script>
+        // Create, Read, Update, Delete 
 
         function addTask() {
             const taskText = getTaskText();
@@ -24,6 +25,7 @@
             } else {
                 console.log("No task entered.");
             }
+
         }
 
         function getTaskText() {
@@ -42,7 +44,28 @@
             document.getElementById("taskList").appendChild(li);
             console.log("addTaskToList called -> ", taskText, Date());
 
+            const deleteButton = createDealeteButton(li);
+            li.appendChild(deleteButton);
 
+
+        }
+
+        function createDealeteButton(li) {
+            const deletebutton = document.createElement("button");
+            deletebutton.textContent = " X ";
+            deletebutton.className = "delete-button";
+            deletebutton.style.marginLeft = "8px";
+            deletebutton.onclick = () => handleDeleteButtonClick(li);
+            
+            console.log("createDeleteButton() called -> ", li.textContent);
+
+            return deletebutton;
+        }
+
+        function handleDeleteButtonClick(li) {
+
+            console.log("handleDeleteButtonClick() -> ", li.textContent.replace(" X ", " ").trim(),Date());
+            li.remove();
         }
     </script>
 </body>
