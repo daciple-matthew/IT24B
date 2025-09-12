@@ -53,6 +53,37 @@ function mainMenu() {
     })
 }
 
+function sayHello() {
+    console.log("Hello");
+}
+
+function computeFactorial() {
+    console.log("Factorial");
+
+}
+function exitProgram() {
+    console.log("Exiting Application");
+    rl.close();
+    console.clear();
+}
+function backToMenu() {
+    console.log("----------");
+    console.log("1. Back To Menu");
+    console.log("2. Exit");
+
+    rl.question("What would you like to do? (1-2)", (backToMenuChoice) => {
+
+        if (backToMenuChoice === "1") {
+            console.clear();
+            mainMenu();
+        } else if (backToMenuChoice === "2") {
+            exitProgram();
+        } else {
+            console.log("Invalid Choice. Please Try Again!");
+            backToMenu();
+        }
+    })
+}
 
 
 
